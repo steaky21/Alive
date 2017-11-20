@@ -1,8 +1,8 @@
 import usb.core, usb.util, cwiid, time
 
 #Give our robot arm an easy name so that we only need to specify all the junk required for the usb connection once
-print 'Make sure the arm is ready to go.'
-print ''
+print ('Make sure the arm is ready to go.')
+print ('')
 Armc = 1750
 Arm  = None
 while (Arm == None):
@@ -11,9 +11,9 @@ while (Arm == None):
     #This will wait for a second, and then if the program could not connect, it tells us and tries again
     Armc = Armc + 1
     if (Armc == 2000):
-        print 'Could not connect to Arm, double check its connections.'
-        print 'Program will continue when connection is established...'
-        print ' '
+        print ('Could not connect to Arm, double check its connections.')
+        print ('Program will continue when connection is established...')
+        print ('')
         Armc = Armc/2000
         continue
 
@@ -35,36 +35,36 @@ def ArmMove(Duration, ArmCmd):
     Arm.ctrl_transfer(0x40,6,0x100,0,ArmCmd,1000)
 
 #Establish a connection with the wiimote
-print 'Connected to arm successfully.'
-print ' '
-print 'Press 1 and 2 on the wiimote at the same time.'
+print ('Connected to arm successfully.')
+print ('')
+print ('Press 1 and 2 on the wiimote at the same time.')
 #Connect to mote and if it doesn't connect then it tells us and tries again
 time.sleep(3)
-print ''
-print 'Establishing Connection... 5'
+print ('')
+print ('Establishing Connection... 5')
 time.sleep(1)
-print 'Establishing Connection... 4'
+print ('Establishing Connection... 4')
 time.sleep(1)
-print 'Establishing Connection... 3'
+print ('Establishing Connection... 3')
 Wii = None
 while (Wii==None):
     try:
         Wii = cwiid.Wiimote()
     except RuntimeError:
-        print 'Error connecting to the wiimote, press 1 and 2.'
-print 'Establishing Connection... 2'
+        print ('Error connecting to the wiimote, press 1 and 2.')
+print ('Establishing Connection... 2')
 time.sleep(1)
-print 'Establishing Connection... 1'
+print ('Establishing Connection... 1')
 time.sleep(1)
-print ''
+print ('')
 
 #Once a connection has been established with the two devices the rest of the program will continue; otherwise, it will keep on trying to connect to the two devices
 
 #Rumble to indicate connection and turn on the LED
 Wii.rumble = 1 #1 = on, 0 = off
-print 'Connection Established.'
-print 'Press any button to continue...'
-print ''
+print ('Connection Established.')
+print ('Press any button to continue...')
+print ('')
 
 ''' Each number turns on different leds on the wiimote
     ex) if Wii.led = 1, then LED 1 is on
@@ -109,8 +109,8 @@ while True:
 
     # If the home button is pressed then rumble and quit, plus close program
     if (buttons & cwiid.BTN_HOME):
-        print ''
-        print 'Closing Connection...'
+        print ('')
+        print ('Closing Connection...')
         ArmLight = 0
         ArmMove(.1,[0,0,0])
         Wii.rumble = 1
@@ -138,36 +138,36 @@ while True:
 
     #Check to see if other buttons are pressed
     if (buttons & cwiid.BTN_A):
-        print 'A pressed'
+        print ('A pressed')
         time.sleep(Delay)
         ArmMove(.1,[1,0,ArmLight])
     if (buttons & cwiid.BTN_B):
-        print 'B pressed'
+        print ('B pressed')
         time.sleep(Delay)
         ArmMove(.1,[2,0,ArmLight])
     if (buttons & cwiid.BTN_1):
-        print '1 pressed'
+        print ('1 pressed')
         ArmMove(.1,[16,0,ArmLight])
     if (buttons & cwiid.BTN_2):
-        print '2 pressed'
+        (print '2 pressed')
         ArmMove(.1,[32,0,ArmLight])
     if (buttons & cwiid.BTN_MINUS):
-        print 'Minus pressed'
+        print ('Minus pressed')
         ArmMove(.1,[8,0,ArmLight])
     if (buttons & cwiid.BTN_PLUS):
-        print 'Plus pressed'
+        print ('Plus pressed')
         ArmMove(.1,[4,0,ArmLight])
     if (buttons & cwiid.BTN_UP):
-        print 'Up pressed'
+        print ('Up pressed')
         ArmMove(.1,[64,0,ArmLight])
     if (buttons & cwiid.BTN_DOWN):
-        print 'Down pressed'
+        print ('Down pressed')
         ArmMove(.1,[128,0,ArmLight])
     if (buttons & cwiid.BTN_LEFT):
-        print 'Left pressed'
+        print ('Left pressed')
         ArmMove(.1,[0,2,ArmLight])
     if (buttons & cwiid.BTN_RIGHT):
-        print 'Right pressed'
+        print ('Right pressed')
         ArmMove(.1,[0,1,ArmLight])
 
     #Here we handle the nunchuk, along with the joystick and the buttons
