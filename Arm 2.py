@@ -193,33 +193,33 @@ while True:
                 #Make it so that we can control the arm with the joystick
                 if (NunchukStickX < 60):
                     ArmMove(.1,[0,2,ArmLight])
-                    print 'Moving Left'
+                    print ('Moving Left')
                 if (NunchukStickX > 190):
                     ArmMove(.1,[0,1,ArmLight])
-                    print 'Moving Right'
+                    print ('Moving Right')
                 if (NunchukStickY < 60):
                     ArmMove(.1,[128,0,ArmLight])
-                    print 'Moving Down'
+                    print ('Moving Down')
                 if (NunchukStickY > 190):
                     ArmMove(.1,[64,0,ArmLight])
-                    print 'Moving Up'
+                    print ('Moving Up')
 
 #Make it so that we can control the arm with tilt Functions
                 #Left to Right
                 if (Accx < 100 and NAccx < 90 ):
                     ArmMove(.1,[0,2,ArmLight])
-                    print 'Moving Left'
+                    print ('Moving Left')
                 if (Accx > 135 and NAccx > 150):
                     ArmMove(.1,[0,1,ArmLight])
-                    print 'Moving Right'
+                    print ('Moving Right')
 
                 #Up and Down
                 if (Accy < 100 and NAccy < 90):
                     ArmMove(.1,[64,0,0])
-                    print 'Moving Up'
+                    print ('Moving Up')
                 if (Accy > 135 and NAccy > 150):
                     ArmMove(.1,[128,0,0])
-                    print 'Moving Down'
+                    print ('Moving Down')
 
                 #Here we create a variable to store the nunchuck button data
                 #0 = no buttons pressed
@@ -229,16 +229,16 @@ while True:
 
                 ChukBtn = Wii.state['nunchuk']['buttons']
                 if (ChukBtn == 1):
-                    print 'Z pressed'
+                    print ('Z pressed')
                     ArmLight = 0
                     ArmMove(.1,[0,0,ArmLight])
                 if (ChukBtn == 2):
-                    print 'C pressed'
+                    print ('C pressed')
                     ArmLight = 1
                     ArmMove(.1,[0,0,ArmLight])
                 #If both are pressed the led blinks
                 if (ChukBtn == 3):
-                    print 'C and Z pressed'
+                    print ('C and Z pressed')
                     ArmMove(.1,[0,0,0])
                     time.sleep(.25)
                     ArmMove(.1,[0,0,1])
@@ -258,7 +258,7 @@ while True:
 
 #This part down below is the part that tells us if no nunchuk is connected to the wiimote
             except KeyError:
-                print 'No nunchuk detected.'
+                print ('No nunchuk detected!')
         else:
             if (ArmLight == 0):
                 if (Accz > 179 or Accz < 50):
@@ -272,7 +272,7 @@ while True:
                     time.sleep(.5)
 
             if (Counter == 10000):
-                print 'No nunchuk detected.'
+                print ('No nunchuk detected!')
                 Counter = Counter/10000
                 break
             Counter = Counter + 1
