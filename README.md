@@ -1,7 +1,7 @@
 ## Hello there, I am alive.
 
-A simple and easy-to-use operating system for Desktop and Raspberry.
+A simple and easy-to-use operating system for Desktop.
 
-I am still being made, so please don't try to download me as i still need to get my clothes on!!
+Please don't try to download me as i still need to get my clothes on!!
 
 ## Screen-shots comming soon!
